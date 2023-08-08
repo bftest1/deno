@@ -1,0 +1,18 @@
+name: Build with Trunk Breakpoint
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        
+      - name: Testing trunk breakpoint
+        uses: trunk-io/breakpoint@v1
+        with:
+          breakpoint-id: echo-hello
+          run: echo 'hello world'
+          trunk-token: ${{ secrets.TRUNK_TOKEN }}
